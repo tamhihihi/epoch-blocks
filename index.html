@@ -1,0 +1,65 @@
+<!doctype html><html lang="vi" data-theme="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#172d30"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EPOCH"><link rel="apple-touch-icon" href="assets/app-192.png"><link rel="manifest" href="manifest.webmanifest"><title>EPOCH Blocks — Xếp khối & bộ sưu tập</title><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><section class="lobby" id="lobby" hidden>
+  <span class="label">XẾP KHỐI · SƯU TẦM · KHÁM PHÁ</span>
+  <div id="themeDecor" class="theme-decor" aria-hidden="true"></div><div class="deco" id="deco" aria-hidden="true"></div>
+  <h1 class="ltitle">EPOCH BLOCKS</h1>
+  <p class="tag">Khối nhỏ. Combo lớn. Thế giới mới.</p>
+  <div class="lstats">
+    <div><div class="label">Kỷ lục</div><div class="lnum" id="lBest">0</div></div>
+    <div><div class="label">Ván đã chơi</div><div class="lnum" id="lGames">0</div></div>
+  </div>
+  <div class="lbtns">
+    <button class="btn" id="resumeBtn" type="button" hidden>Chơi tiếp ván đang dở</button>
+    <button class="btn big" id="playBtn" type="button">Vào chơi</button>
+  </div>
+  <button class="btn shop-open">✧ Cửa hàng & bộ sưu tập</button><button class="btn ghost events-open">◈ Sự kiện hôm nay</button><div class="mode-choice"><button class="btn ghost" id="classicMode">∞ Cổ điển</button><button class="btn ghost" id="adventureMode">⚑ Hành trình</button></div><p class="hint" id="modeInfo"></p><ol class="how">
+    <li>Kéo từng khối vào lưới 8×8.</li>
+    <li>Lấp đầy một hàng hoặc một cột để xóa.</li>
+    <li>Xóa liên tiếp để nhân điểm liên hoàn.</li>
+  </ol>
+  <div class="count" id="count" hidden><span id="countNum">3</span></div>
+</section>
+
+<main class="game" id="game" hidden>
+  <header class="top">
+    <h1>EPOCH<span>BLOCKS</span></h1>
+    <div class="acts">
+      <button class="btn ghost shop-open" type="button" aria-label="Cửa hàng">✧</button><button class="btn ghost" id="lobbyBtn" type="button">Sảnh</button>
+      <button class="btn ghost" id="newBtn" type="button">Ván mới</button>
+    </div>
+  </header>
+
+  <div class="play-mode"><span id="modeLabel">CỔ ĐIỂN · KHÔNG GIỚI HẠN</span><button id="sound" class="plain">♫ Tắt</button></div><div class="resource-hud"><div title="Xu"><i>✦</i><b id="hudCoins">0</b></div><div title="Kỷ lục"><i>♛</i><b id="hudBest">0</b></div><div title="Tổng hàng và cột đã xóa"><i>◆</i><b id="hudLines">0</b></div></div><section class="scores">
+    <div>
+      <div class="label">Điểm</div>
+      <div class="score" id="score">0</div>
+    </div>
+    <div class="combo" id="combo" hidden></div>
+    <div class="r">
+      <div class="label">Kỷ lục</div>
+      <div class="best" id="best">0</div>
+    </div>
+  </section>
+
+  <div id="objective" hidden></div><div id="comboLife" class="combo-life"></div><div class="boardwrap" id="wrap">
+    <div class="board" id="board" role="group" aria-label="Lưới 8 nhân 8"></div>
+    <div class="over" id="over" hidden>
+      <div class="card">
+        <div class="label">Hết nước đi</div>
+        <div class="final" id="finalScore">0</div>
+        <p class="note" id="finalNote"></p>
+        <button class="btn" id="again" type="button">Chơi lại</button><button class="btn ghost" id="rescue">Cứu ván · 100 ✦</button><button class="btn ghost shop-open">✧ Cửa hàng</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tray" id="tray">
+    <div class="slot" data-i="0"></div>
+    <div class="slot" data-i="1"></div>
+    <div class="slot" data-i="2"></div>
+  </div>
+
+  <p class="hint" id="playHint">Kéo khối vào bàn · Lấp đầy hàng hoặc cột để xóa</p><div class="assist"><button id="hammer">⚒ Búa <small>70 ✦</small></button><button id="shuffle">⤨ Đổi bộ <small>100 ✦</small></button><button class="events-open" aria-label="Sự kiện">◈</button><button id="help">? Luật chơi</button></div><div class="play-footer"><span id="walletGame"></span><span id="assistCount"></span></div>
+</main>
+
+<section id="hubScreen" class="hub-screen" hidden><header class="hub-header"><button id="hubBack" aria-label="Về bàn chơi">←</button><b>EPOCH <span>COLLECTION</span></b><div>✦ <strong id="hubCoins">0</strong></div></header><nav class="hub-tabs"><button data-hub-tab="items">Vật phẩm</button><button data-hub-tab="themes">Bộ nền</button><button data-hub-tab="events">Sự kiện</button></nav><div id="hubContent"></div></section><dialog id="dialog"><button id="closeDialog" aria-label="Đóng">×</button><div id="dialogContent"></div></dialog><div id="toast" role="status"></div><div class="save-note" id="saveNote">Tự lưu trên thiết bị · EPOCH Blocks</div>
+<script src="worldfx.js"></script><script src="game.js"></script><script src="mobile.js"></script></body></html>
